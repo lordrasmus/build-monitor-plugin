@@ -39,6 +39,21 @@
   min-height: 0;
 }
 
+// Classic single-page layout (paging disabled): one grid that scrolls
+// vertically instead of snapping between horizontal pages.
+.bm-grid-single {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+
+  .bm-grid {
+    height: auto;
+    grid-auto-rows: minmax(160px, auto);
+  }
+}
+
 .bm-grid-viewport {
   flex: 1 1 auto;
   min-height: 0;

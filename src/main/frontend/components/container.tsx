@@ -3,23 +3,32 @@ import { useUserPreferences } from "../context/user-preference-provider.tsx";
 import Notice from "./notice.tsx";
 import OptionsButton from "./options-button";
 import PagedGrid from "./paged-grid.tsx";
+import SingleGrid from "./single-grid.tsx";
 
 function Container() {
   const { jobs, isLoading } = useJobs();
-  const { textSize, maximumNumberOfColumns } = useUserPreferences();
+  const { textSize, maximumNumberOfColumns, disablePaging } =
+    useUserPreferences();
 
   return (
     <>
       {!isLoading && (
         <>
           {jobs.length === 0 && <Notice />}
-          {jobs.length > 0 && (
-            <PagedGrid
-              jobs={jobs}
-              textSize={textSize}
-              maximumNumberOfColumns={maximumNumberOfColumns}
-            />
-          )}
+          {jobs.length > 0 &&
+            (disablePaging ? (
+              <SingleGrid
+                jobs={jobs}
+                textSize={textSize}
+                maximumNumberOfColumns={maximumNumberOfColumns}
+              />
+            ) : (
+              <PagedGrid
+                jobs={jobs}
+                textSize={textSize}
+                maximumNumberOfColumns={maximumNumberOfColumns}
+              />
+            ))}
         </>
       )}
       <OptionsButton amountOfJobs={jobs.length} />

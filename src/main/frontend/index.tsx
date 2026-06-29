@@ -27,6 +27,10 @@ root.render(
           colorBlindMode:
             rootElement.dataset.appearanceColorBlindMode === "true",
           showBadges: rootElement.dataset.appearanceShowBadges === "true",
+          // Paging is disabled by default (classic single-page layout).
+          // A server-side data attribute set to "false" can re-enable paging.
+          disablePaging:
+            rootElement.dataset.appearanceDisablePaging !== "false",
         }}
       >
         <JobsProvider

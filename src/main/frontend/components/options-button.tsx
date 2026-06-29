@@ -22,6 +22,8 @@ const OutsideButtonWithDropdown = ({ amountOfJobs }: OptionsButtonProps) => {
     setColorBlindMode,
     showBadges,
     setShowBadges,
+    disablePaging,
+    setDisablePaging,
     reset,
     isResettable,
   } = useUserPreferences();
@@ -90,6 +92,13 @@ const OutsideButtonWithDropdown = ({ amountOfJobs }: OptionsButtonProps) => {
                     id="settings-color-blind-mode"
                     value={colorBlindMode}
                     setValue={(e) => setColorBlindMode(e)}
+                    disabled={controlsEnabled}
+                  />
+                  <Checkbox
+                    label={"Disable paging"}
+                    id="settings-disable-paging"
+                    value={disablePaging}
+                    setValue={(e) => setDisablePaging(e)}
                     disabled={controlsEnabled}
                   />
                 </div>,
