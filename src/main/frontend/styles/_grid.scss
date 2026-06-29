@@ -39,18 +39,15 @@
   min-height: 0;
 }
 
-// Classic single-page layout (paging disabled): one grid that scrolls
-// vertically instead of snapping between horizontal pages.
+// Classic single-page layout (paging disabled): one grid that fills the
+// viewport. Rows share the height equally so cells scale to fit — no scrolling.
 .bm-grid-single {
   flex: 1 1 auto;
   min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
+  overflow: hidden;
 
   .bm-grid {
-    height: auto;
-    grid-auto-rows: minmax(160px, auto);
+    height: 100%;
   }
 }
 
@@ -100,14 +97,16 @@
   border-radius: 999px;
   border: none;
   background: none;
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--text-color-secondary), transparent);
+  box-shadow: inset 0 0 0 2px
+    color-mix(in srgb, var(--text-color-secondary), transparent);
   cursor: pointer;
   transition: var(--standard-transition);
   scale: 75%;
 
   &:hover,
   &:focus {
-    box-shadow: inset 0 0 0 0.75rem color-mix(in srgb, var(--text-color-secondary) 75%, transparent);
+    box-shadow: inset 0 0 0 0.75rem
+      color-mix(in srgb, var(--text-color-secondary) 75%, transparent);
   }
 
   &--active {
